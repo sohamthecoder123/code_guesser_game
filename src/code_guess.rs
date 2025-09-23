@@ -1,9 +1,10 @@
 #[allow(unused_doc_comments)]
+
 /*
 Herein lies a function that takes in 2 inputs: the code and a guess, compares them, and gives out the result
 */
 
-pub fn guess_code(code: Vec<usize>, guess: Vec<usize>) -> Vec<String>{
+pub fn guess_code(code: &Vec<isize>, guess: &Vec<isize>) -> Vec<String>{
     ///
     /// Takes in two inputs: the code and a guess. Compares the two
     /// Returns a vector of Strings
