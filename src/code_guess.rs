@@ -4,7 +4,7 @@
 Herein lies a function that takes in 2 inputs: the code and a guess, compares them, and gives out the result
 */
 
-pub fn guess_code(code: &Vec<isize>, guess: &Vec<isize>) -> Vec<String>{
+pub fn guess_code_check(code: &Vec<isize>, guess: &Vec<isize>) -> Vec<String>{
     ///
     /// Takes in two inputs: the code and a guess. Compares the two
     /// Returns a vector of Strings
