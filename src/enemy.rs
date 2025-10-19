@@ -6,14 +6,14 @@ use crate::code_guess;
 
 fn guess_code(code: &Vec<isize>) -> Vec<String>{
     let input: String = user_input::get_user_input_trimmed("");
-    let guess: Vec<isize> = text_parser::text_to_code(input);    
+    let guess: Vec<isize> = text_parser::text_to_code(&input);    
     
     let x: Vec<String> = code_guess::guess_code_check(&code, &guess);
     return x;
 }
 
 pub struct Enemy {
-    pub id: isize,
+    pub name: String,
     pub cat: String,
     pub health: isize,
     pub size: usize,
@@ -21,6 +21,7 @@ pub struct Enemy {
     pub upper: isize,
     pub code: Vec<isize>,
     pub damage: isize,
+    pub isAlive: bool,
 }
 
 impl Enemy {
@@ -32,13 +33,14 @@ impl Enemy {
         self.health += amount;
     }
 
-    pub fn attack_player(&mut self, mut pl: player::Player){
+    pub fn attack_player(&mut self, pl: &mut player::Player){
         pl.take_damage(self.damage);
     }
 
     pub fn fight(&mut self) -> Vec<String>{
         let result: Vec<String> = guess_code(&self.code);
 
+        /*
         for i in &result{
             if *i == "in_place".to_string(){
                 self.change_health(-2);
@@ -49,6 +51,11 @@ impl Enemy {
             else {
                 continue;
             }
+        }
+        */
+
+        if result == vec!["in_place"; self.code.len()]{
+            self.isAlive = false;
         }
 
         return result;
